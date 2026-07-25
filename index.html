@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>项目展示 | Lin-Wan-fish</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0f0f13;
+      --card: #1a1a22;
+      --border: #2a2a36;
+      --text: #e4e4ef;
+      --muted: #8b8ba0;
+      --accent: #7c5cfc;
+      --accent-2: #00d4aa;
+      --accent-3: #ff6b9d;
+      --radius: 16px;
+    }
+    body {
+      font-family: -apple-system, "Segoe UI", "Noto Sans SC", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+    .hero {
+      text-align: center;
+      padding: 72px 24px 48px;
+      background: radial-gradient(ellipse at 50% 0%, rgba(124,92,252,.12), transparent 60%);
+    }
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: -.02em;
+      margin-bottom: 8px;
+    }
+    .hero p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+    .hero .links {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+    }
+    .hero .links a {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: .9rem;
+      transition: color .2s;
+    }
+    .hero .links a:hover { color: var(--accent-2); }
+
+    .projects {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 24px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: transform .25s, border-color .25s;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+    }
+    .card-banner {
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .card-banner::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, transparent 40%, rgba(0,0,0,.25));
+    }
+    .banner-agent { background: linear-gradient(135deg, #7c5cfc, #4a3aff); }
+    .banner-ai    { background: linear-gradient(135deg, #00d4aa, #0099cc); }
+    .card-body { padding: 24px; }
+    .card-body h2 {
+      font-size: 1.25rem;
+      margin-bottom: 6px;
+    }
+    .card-body .subtitle {
+      color: var(--muted);
+      font-size: .85rem;
+      margin-bottom: 14px;
+    }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .tag {
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: .75rem;
+      font-weight: 600;
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+    .tag.python { border-color: #3776ab; color: #7fb3d9; }
+    .tag.tray   { border-color: #555; color: #aaa; }
+    .tag.html   { border-color: #e34c26; color: #e07b5a; }
+    .tag.llm    { border-color: #7c5cfc; color: #a08afa; }
+    .tag.toast  { border-color: #00d4aa; color: #00d4aa; }
+    .tag.sched  { border-color: #f59e0b; color: #f59e0b; }
+
+    .features {
+      list-style: none;
+      margin-bottom: 20px;
+    }
+    .features li {
+      padding: 4px 0 4px 22px;
+      position: relative;
+      font-size: .9rem;
+      color: #c0c0d0;
+    }
+    .features li::before {
+      content: "▸";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+    .card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 20px;
+      border-radius: 10px;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      font-size: .85rem;
+      font-weight: 600;
+      transition: background .2s;
+    }
+    .card-link:hover { background: #6a4ce0; }
+    .card-link svg { width: 16px; height: 16px; }
+
+    footer {
+      text-align: center;
+      padding: 32px 24px;
+      color: var(--muted);
+      font-size: .8rem;
+      border-top: 1px solid var(--border);
+    }
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 1.6rem; }
+      .projects { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <h1>项目展示</h1>
+    <p>两个轻量级 Windows 托盘工具，每日自动抓取 AI / Agent 领域动态，生成单文件 HTML 日报并推送桌面通知。</p>
+    <div class="links">
+      <a href="https://github.com/LIn-Wan-fish" target="_blank">GitHub Profile</a>
+    </div>
+  </header>
+
+  <main class="projects">
+    <!-- Agent News -->
+    <article class="card">
+      <div class="card-banner banner-agent">🤖</div>
+      <div class="card-body">
+        <h2>Agent 项目日报</h2>
+        <p class="subtitle">每日 Agent 项目推送 · GitHub Trending + HuggingFace + Hacker News</p>
+        <div class="tags">
+          <span class="tag python">Python</span>
+          <span class="tag tray">pystray 托盘</span>
+          <span class="tag html">单文件 HTML</span>
+          <span class="tag llm">DeepSeek API</span>
+          <span class="tag toast">Windows Toast</span>
+          <span class="tag sched">APScheduler</span>
+        </div>
+        <ul class="features">
+          <li>多源聚合：GitHub Trending 周榜 / GitHub Search API / Hugging Face papers / Hacker News</li>
+          <li>三级分类：商业项目 → 学习项目 → 研究项目，二级技术栈标签（全栈/后端/前端/移动端/其他）</li>
+          <li>大模型自动分类 + 英译中，跨源去重</li>
+          <li>单文件 HTML 日报，嵌套分组 + 锚点导航</li>
+          <li>托盘右键菜单：类别/技术栈实时切换、自定义推送时间、开机自启</li>
+        </ul>
+        <a class="card-link" href="https://github.com/LIn-Wan-fish/agent-news-daily" target="_blank">
+          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38v-1.49c-2.67.58-3.23-1.19-3.23-1.19-.46-1.18-1.12-1.49-1.12-1.49-.92-.63.07-.62.07-.62 1.02.07 1.56 1.05 1.56 1.05.91 1.56 2.39 1.11 2.98.85.09-.66.36-1.11.65-1.36-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02.8-.22 1.66-.33 2.5-.34.85 0 1.71.12 2.5.34 1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.69.92.69 1.85v2.74c0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          查看源码
+        </a>
+      </div>
+    </article>
+
+    <!-- AI News -->
+    <article class="card">
+      <div class="card-banner banner-ai">📰</div>
+      <div class="card-body">
+        <h2>AI 晨报</h2>
+        <p class="subtitle">每日 AI 日报推送 · AI HOT 数据源</p>
+        <div class="tags">
+          <span class="tag python">Python</span>
+          <span class="tag tray">pystray 托盘</span>
+          <span class="tag html">单文件 HTML</span>
+          <span class="tag llm">DeepSeek API</span>
+          <span class="tag toast">Windows Toast</span>
+          <span class="tag sched">APScheduler</span>
+        </div>
+        <ul class="features">
+          <li>每日定时拉取 AI HOT 日报 API，生成 5 版块晨报 HTML</li>
+          <li>5 大版块：模型发布 / 产品发布 / 行业动态 / 论文研究 / 技巧与观点</li>
+          <li>大模型自动摘要增强（DeepSeek API）</li>
+          <li>Windows 原生 Toast 通知，点击自动打开浏览器</li>
+          <li>历史日报按日期存档，托盘菜单可切换版块、自定义时间、开机自启</li>
+        </ul>
+        <a class="card-link" href="https://github.com/LIn-Wan-fish/ai-news-daily" target="_blank">
+          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38v-1.49c-2.67.58-3.23-1.19-3.23-1.19-.46-1.18-1.12-1.49-1.12-1.49-.92-.63.07-.62.07-.62 1.02.07 1.56 1.05 1.56 1.05.91 1.56 2.39 1.11 2.98.85.09-.66.36-1.11.65-1.36-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02.8-.22 1.66-.33 2.5-.34.85 0 1.71.12 2.5.34 1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.69.92.69 1.85v2.74c0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          查看源码
+        </a>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    Built with Python · pystray · windows-toasts · APScheduler · DeepSeek API
+  </footer>
+</body>
+</html>
