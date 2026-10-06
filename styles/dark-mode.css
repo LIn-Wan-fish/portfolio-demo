@@ -1,0 +1,45 @@
+/* 深色模式配色(对应 Issue #5)
+ *
+ * 用法:在 index.html 的 <head> 里加上
+ *   <link rel="stylesheet" href="styles/dark-mode.css">
+ * 并给 <html> 加上 data-theme 属性,手动切换时写入 localStorage。
+ */
+
+:root {
+  --bg: #ffffff;
+  --fg: #1a1a1a;
+  --muted: #6b7280;
+  --accent: #2563eb;
+  --card: #f8fafc;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1115;
+    --fg: #e5e7eb;
+    --muted: #9ca3af;
+    --accent: #60a5fa;
+    --card: #1a1d23;
+  }
+}
+
+html[data-theme="dark"] {
+  --bg: #0f1115;
+  --fg: #e5e7eb;
+  --muted: #9ca3af;
+  --accent: #60a5fa;
+  --card: #1a1d23;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  transition: background-color .2s ease, color .2s ease;
+}
+
+a { color: var(--accent); }
+
+/* 图片在深色背景下降低亮度,避免刺眼 */
+@media (prefers-color-scheme: dark) {
+  img { filter: brightness(.88); }
+}
